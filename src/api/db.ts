@@ -1,0 +1,2 @@
+export const url = 'https://znptjezufrulfpubaodj.supabase.co'
+export const api_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpucHRqZXp1ZnJ1bGZwdWJhb2RqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgxNzQ0NTYsImV4cCI6MTk4Mzc1MDQ1Nn0.eznfzXYVd45lrYcg6GXkZbskPEAUetdI-GNy8jEHMIk'
