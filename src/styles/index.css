@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6, p, span, button {
     @apply text-white
 }
 ::-webkit-scrollbar {
-    @apply w-2 bg-transparent
+    @apply w-1 bg-transparent
 }
 ::-webkit-scrollbar-thumb {
     @apply rounded-xl bg-neutral-800

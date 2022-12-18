@@ -1,32 +1,43 @@
 import React from 'react'
-import { useRecoilValueLoadable } from 'recoil';
-import { RoomData } from '../../store/Room';
+import { useRecoilRefresher_UNSTABLE, useRecoilValueLoadable } from 'recoil';
 import DesksList from '../molecules/DesksList';
-import { useState } from 'react';
 import NewDeskTodo from '../molecules/NewDeskTodo';
+import { Helmet } from 'react-helmet';
+import { DeskTodos } from '../../store/RoomDesks';
+import { BiChevronLeft, BiLoaderAlt } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 type Props = {
     roomID: string,
     roomName: string,
 }
 const Room: React.FC<Props> = ({roomID, roomName}) => {
-    const room = useRecoilValueLoadable(RoomData(roomID))
+    const room = useRecoilValueLoadable(DeskTodos(roomID))
+    const refresh = useRecoilRefresher_UNSTABLE(DeskTodos(roomID))
     if (room.state === 'loading' || !room.getValue()) {
         return (
             <div className='w-full h-full flex flex-col gap-2 items-center justify-center'>
-                <div className="w-1/2 h-4 py-2 rounded-xl animate-pulse bg-neutral-900"/>
+                <BiLoaderAlt className='text-white animate-spin'/>
             </div>
         )
     } 
     if (room.getValue()) {
         return (
-            <div className='w-full h-full flex flex-col gap-2 items-center justify-center'>
-                <div className="w-full h-fit py-2 flex items-center justify-between border-b border-neutral-700">
-                    <h1 className='text-4xl font-bold'>{roomName}</h1>
+            <div className='w-full h-full max-h-[91vh] inline-flex flex-col gap-2 items-center justify-center'>
+                <Helmet>
+                    <title>{roomName}</title>
+                </Helmet>
+                <div className="w-full h-fit flex items-center justify-between border-b border-neutral-700">
+                    <div className="w-fit h-full flex items-center">
+                        <Link to='/'><BiChevronLeft className='text-white' size={24}/></Link>
+                        <h1 className='text-4xl font-bold p-2 rounded-xl cursor-pointer hover:bg-neutral-900'>{roomName}</h1>
+                    </div>
                     {/* <button className='py-2 px-3 font-semibold text-sm rounded-xl bg-blue-600'>Добавить столбец</button> */}
                 </div>
-                <div className="w-full h-full gap-2 flex">
-                    <DesksList list={room.getValue()!}  />
-                    <NewDeskTodo roomID={roomID} />
+                <div className="w-full h-full pb-1 inline-flex overflow-x-auto snap-x snap-mandatory">
+                    <div className="w-fit min-w-full h-full max-h-full flex items-end lg:items-start shrink-0 gap-x-2">
+                        <DesksList refresh={refresh} roomID={roomID} list={room.getValue()!}  />
+                        <NewDeskTodo roomID={roomID} />
+                    </div>
                 </div>
             </div>
         )

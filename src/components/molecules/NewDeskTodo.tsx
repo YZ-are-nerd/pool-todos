@@ -1,6 +1,7 @@
 import { BiPlus } from 'react-icons/bi';
 import { useState } from 'react';
 import { controllerAPI } from '../../api/controller.api';
+import { useEffect } from 'react';
 
 type Props = {
     roomID: string
@@ -13,9 +14,14 @@ const NewDeskTodo: React.FC<Props> = ({roomID}) => {
         setListName('')
         setEditMode(false)
     }
+    useEffect(() => {
+        if (editMode) {
+            document.getElementById('newList')?.scrollIntoView({behavior: 'smooth', block: 'center'})
+        }
+    },[editMode])
     if (editMode) {
         return (
-            <div onClick={() => setEditMode(!editMode)} className="w-3/12 h-fit shrink-0 rounded-xl flex flex-col p-2 bg-neutral-800">
+            <div id='newList' onClick={() => setEditMode(!editMode)} className="w-6/12 lg:w-3/12 h-fit snap-always snap-center shrink-0 rounded-xl flex flex-col p-2 bg-neutral-800">
                 <div onClick={e => e.stopPropagation()} className="w-full h-full flex flex-col gap-2">
                     <h1 className='text-4xl font-bold'>Новый список</h1>
                     <input placeholder="Как назовете список?" value={listName} onChange={e => setListName(e.target.value)}
@@ -31,7 +37,7 @@ const NewDeskTodo: React.FC<Props> = ({roomID}) => {
             </div>
         )
     } else return (
-        <div onClick={() => setEditMode(!editMode)} className="w-3/12 h-full shrink-0 cursor-pointer gap-1 rounded-xl flex items-center justify-center bg-neutral-800">
+        <div onClick={() => setEditMode(!editMode)} className="w-7/12 lg:w-3/12 h-full snap-always snap-center shrink-0 cursor-pointer gap-1 rounded-xl flex items-center justify-center bg-neutral-800">
             <BiPlus className='text-white' size={20}/>
             <p className='font-semibold text-sm'>Добавить новый столбец</p>
         </div>

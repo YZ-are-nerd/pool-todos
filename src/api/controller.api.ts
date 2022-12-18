@@ -17,6 +17,13 @@ export const controllerAPI = (() => {
             const res = await modelAPI.getDeskTodosByID(id)
             return res
         },
+        getDeskTodoByID: async(id: string) => {
+            const res = await modelAPI.getDeskTodoByID(id)
+            return res
+        },
+        deleteDeskTodo: async(deskID: string) => {
+            await modelAPI.deleteDeskTodo(deskID)
+        },
         getTodosByDeskID: async(deskID: string) => {
             const res = await modelAPI.getTodosByDeskID(deskID)
             return res
@@ -29,8 +36,12 @@ export const controllerAPI = (() => {
             const res = await modelAPI.updateTodoState(todoID, state)
             return res
         },
-        getRoomByUserID: async(userID: string) => {
-            const res = await modelAPI.getRoomByUserID(userID)
+        getRoomsByUserID: async(userID: string) => {
+            const res = await modelAPI.getRoomsByUserID(userID)
+            return res
+        },
+        getRoomByID: async(ID: string) => {
+            const res = await modelAPI.getRoomByID(ID)
             return res
         },
         checkProfile: async() => {

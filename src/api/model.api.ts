@@ -1,7 +1,5 @@
 import { supabase } from './client';
-import { IDeskTodos } from '../store/DeskTodos';
-import { UserData } from '../store/User';
-import { ITodosTasks } from '../store/TodosTasks';
+import { IDeskTodos, IRoom, ITodosTasks, UserData } from './types';
 
 
 export const modelAPI = (() => {
@@ -34,6 +32,22 @@ export const modelAPI = (() => {
             if (data) return data as IDeskTodos[]
             return null
         },
+        getDeskTodoByID: async(id: string) => {
+            const { data } = await supabase
+            .from('desk_todo')
+            .select()
+            .eq('ref_to_room', id)
+            .limit(1)
+            .single()
+            return data as IDeskTodos
+        },
+        deleteDeskTodo: async(deskID: string) => {
+            const { error } = await supabase
+            .from('desk_todo')
+            .delete()
+            .eq('id', deskID)
+            console.log(error);
+        },
         getTodosByDeskID: async(deskID: string) => {
             const { data } = await supabase
             .from('todo')
@@ -59,22 +73,31 @@ export const modelAPI = (() => {
             console.log(error);
             
         },
-        getRoomByUserID: async(userID: string) => {
+        getRoomsByUserID: async(userID: string) => {
             const { data } = await supabase
             .from('rooms')
             .select()
             .eq('room_owner', userID)
-            if (data) return data as IDeskTodos[]
+            if (data) return data as IRoom[]
             return null
+        },
+        getRoomByID: async(ID: string) => {
+            const { data } = await supabase
+            .from('rooms')
+            .select()
+            .eq('id', ID)
+            .limit(1)
+            .single()
+            return data as IRoom
         },
         addListInRoom: async(roomID: string, roomName: string) => {
             const { error } = await supabase
             .from('desk_todo')
             .insert({
                 ref_to_room: roomID,
-                name: roomName
+                title: roomName
             })
-
+            console.log(error);
         },
         addNewRoom: async(roomName: string, userID: string) => {
             const { error } = await supabase

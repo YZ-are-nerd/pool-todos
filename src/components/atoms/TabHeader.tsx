@@ -9,7 +9,7 @@ const TabHeader: React.FC<Props> = ({tab}) => {
   return (
     <Tab className={({selected }) => `flex items-center gap-1 py-2 px-4 rounded-xl font-semibold rounded-b-none 
     ${selected ? 'bg-neutral-900 hover:bg-neutral-800' : ''} hover:bg-neutral-900 hover:bg-opacity-50`}>
-        {tab.title}
+       {tab.title}
     </Tab>
   )
 }

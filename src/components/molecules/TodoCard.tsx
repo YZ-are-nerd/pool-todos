@@ -1,6 +1,6 @@
 import CheckBox from '../atoms/CheckBox';
 import { useEffect, useState } from 'react';
-import { ITodosTasks } from '../../store/TodosTasks';
+import { ITodosTasks } from '../../store/TodoList';
 import { useRecoilValue, useRecoilRefresher_UNSTABLE } from 'recoil';
 import { Todo } from '../../store/Todo';
 import { controllerAPI } from '../../api/controller.api';

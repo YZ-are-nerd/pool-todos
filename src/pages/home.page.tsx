@@ -1,30 +1,25 @@
 import { Helmet } from "react-helmet"
-import { Tab } from '@headlessui/react'
-import { useRecoilValue} from 'recoil';
-import { User } from '../store/User';
-import TabHeadersList from '../components/molecules/TabHeadersList';
-import TabContentsList from '../components/molecules/TabContentsList';
-import UserAvatar from '../components/atoms/UserAvatar';
+import { BiPlus } from "react-icons/bi"
+import { Link } from "react-router-dom"
+import { useRecoilValueLoadable } from "recoil"
+import { UserRooms } from "../store/UserRooms"
 const HomePage = () => {
+  const rooms = useRecoilValueLoadable(UserRooms)
   return (
-    <div className="w-full mx-auto flex flex-col h-full lg:p-4 p-2  max-h-screen">
+    <div className="w-full h-[90.5vh] rounded-xl p-2 gap-3 flex flex-col overflow-hidden bg-neutral-900">
         <Helmet>
             <title>Домашняя комната</title>
         </Helmet>
-        <Tab.Group>
-            <Tab.List className='w-full h-fit flex items-center justify-between gap-2'>
-                <div className="w-fit max-w-xl h-full flex items-center gap-2">
-                    <img className="my-auto w-10 h-10" src="/public/pool/x36/pool_primary.svg" alt="" />
-                    <TabHeadersList/>
-                </div>
-                <div className="w-fit h-full flex items-center gap-2">
-                    <UserAvatar />
-                </div>
-            </Tab.List>
-            <Tab.Panels className='w-full h-full rounded-xl p-3 bg-neutral-900'>
-                <TabContentsList/>
-            </Tab.Panels>
-        </Tab.Group>
+        <h1 className="text-xl inline-block mx-auto lg:text-4xl font-bold">Здесь вы найдёте свои комнаты</h1>
+        <div className="w-full h-36 pb-1 rounded-xl flex items-center overflow-x-auto">
+          <div className="w-fit h-full flex items-center gap-2">
+            {rooms.getValue() && rooms.getValue()!.map((room) => 
+              <Link to={`/room/${room.id}`} key={room.id}
+              className="w-64 h-full rounded-xl flex items-center justify-center cursor-pointer text-xl font-bold text-white bg-neutral-800 hover:bg-opacity-80">{room.title}</Link>
+            )}
+            <div className="w-64 h-full rounded-xl flex items-center justify-center cursor-pointer text-xl font-bold text-white bg-neutral-800 hover:bg-opacity-80"><BiPlus className="text-white" size={24} /></div>
+          </div>
+        </div>
     </div>
   )
 }

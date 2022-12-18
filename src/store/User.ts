@@ -1,14 +1,8 @@
-import { atom, selector } from 'recoil';
+import { atom } from 'recoil';
 import { controllerAPI } from '../api/controller.api';
-import { supabase } from '../api/client';
+import { UserData } from '../api/types';
 
-export interface UserData {
-    id: string,
-    username: string,
-    created_at: string,
-    avatar: string,
-    about: string,
-}
+
 const getUserProfile = async() => {
     const user = controllerAPI.checkProfile()
     if (user) return user
