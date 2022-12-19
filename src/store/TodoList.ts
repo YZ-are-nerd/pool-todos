@@ -1,6 +1,5 @@
-import { selector, selectorFamily } from 'recoil';
+import { selectorFamily } from 'recoil';
 import { controllerAPI } from '../api/controller.api';
-import { ITodosTasks } from '../api/types';
 
 
 export const TodosTasks = selectorFamily({

@@ -9,16 +9,13 @@ const NewTab = () => {
         if (user) await controllerAPI.addNewRoom(roomName, user.id)
     }
     return (
-        <div className='w-full h-full flex items-end lg:items-center justify-center'>
+        <div onClick={e => e.stopPropagation()} className='w-full h-full flex items-end lg:items-center justify-center'>
             <div className="w-full max-w-xl max-h-64 h-full p-2 rounded-xl mx-auto flex flex-col gap-2 bg-neutral-800">
                 <div className="w-full h-full flex flex-col">
                     <div className="w-full h-fit flex gap-2 items-start justify-between">
                         <div className="w-full h-fit gap-1 flex flex-col">
                             <h1 className="text-4xl font-bold">Создайте свою комнату</h1>
-                            <p className="leading-5 text-neutral-400">Личная комната. Личные дела. Следите за ходом выполнения дел, 
-                            создавайте больше комнат и много другое.</p>
                         </div>
-                        <img className="h-36 hidden lg:inline" src="/img/new_room_img.svg" alt="" />
                     </div>
                     <div className="w-full h-fit flex flex-col mt-2">
                         <input value={roomName} onChange={e => setRoomName(e.target.value)} placeholder="Назовите свою комнату" 

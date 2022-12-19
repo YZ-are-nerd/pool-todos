@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { supabase } from '../../api/client';
 import { IDeskTodos } from '../../api/types';
+import TodoDeskSkeleton from '../../skeletons/TodoDesk.skeleton';
 import TodoDesk from '../organisms/TodoDesk';
 import NewDeskTodo from './NewDeskTodo';
 type Props = {
@@ -22,7 +23,7 @@ const DesksList: React.FC<Props> = ({list, roomID, refresh}) => {
     return (
       <>
           {
-              list.map((desk) => <TodoDesk data={desk} key={desk.id} />)
+              list.map((desk) => <Suspense fallback={<TodoDeskSkeleton />}><TodoDesk data={desk} key={desk.id} /></Suspense>)
           }
       </>
     )

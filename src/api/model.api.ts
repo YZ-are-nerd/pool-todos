@@ -65,13 +65,21 @@ export const modelAPI = (() => {
             .single()
             return data as ITodosTasks
         },
+        updateListName: async(deskID: string, title: string) => {
+            const { error } = await supabase
+            .from('desk_todo')
+            .update({
+                title: title
+            })
+            .eq('id', deskID)
+            console.log(error);
+        },
         updateTodoState: async(todoID: string, state: boolean) => {
             const { error } = await supabase
             .from('todo')
             .update({ state: state })
             .eq('id', todoID)
             console.log(error);
-            
         },
         getRoomsByUserID: async(userID: string) => {
             const { data } = await supabase
