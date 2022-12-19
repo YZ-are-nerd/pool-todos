@@ -2,11 +2,18 @@ import { useState } from 'react';
 import { controllerAPI } from '../../api/controller.api';
 import { useRecoilValue } from 'recoil';
 import { User } from '../../store/User';
-const NewTab = () => {
+type Props = {
+    modeOff: () => void
+}
+const NewTab:React.FC<Props> = ({modeOff}) => {
     const user = useRecoilValue(User)
     const [roomName, setRoomName] = useState<string>('')
     const setNewRoom = async() => {
-        if (user) await controllerAPI.addNewRoom(roomName, user.id)
+        if (user) {
+            await controllerAPI.addNewRoom(roomName, user.id)
+            setRoomName('')
+            modeOff()
+        }
     }
     return (
         <div onClick={e => e.stopPropagation()} className='w-full h-full flex items-end lg:items-center justify-center'>

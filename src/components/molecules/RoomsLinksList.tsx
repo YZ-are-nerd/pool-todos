@@ -1,18 +1,21 @@
 import { Suspense } from 'react'
-import { useRecoilValueLoadable } from 'recoil'
+import { useRecoilRefresher_UNSTABLE, useRecoilValue } from 'recoil'
 import RoomLinkSkeleton from '../../skeletons/RoomLink.skeleton'
 import { UserRooms } from '../../store/UserRooms'
 import RoomLink from '../atoms/RoomLink'
+import NewRoom from './NewRoom'
 
 const RoomsLinksList = () => {
-  const rooms = useRecoilValueLoadable(UserRooms)
+  const rooms = useRecoilValue(UserRooms)
+  const refresh = useRecoilRefresher_UNSTABLE(UserRooms)
   return (
     <>
-        {rooms.getValue() && rooms.getValue()!.map((room) => 
+        {rooms && rooms.map((room) => 
             <Suspense key={room.id + 'skeleton'} fallback={<RoomLinkSkeleton/>}>
                 <RoomLink key={room.id} room={room} />
             </Suspense>
         )}
+        <NewRoom refresh={refresh} />
     </>
   )
 }

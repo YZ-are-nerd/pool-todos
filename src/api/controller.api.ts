@@ -60,6 +60,9 @@ export const controllerAPI = (() => {
         },
         addNewTodo: async(deskID: string, state: boolean, title: string) => {
             await modelAPI.addNewTodo(deskID, state, title)
+        },
+        deleteTodo: async(todoID: string) => {
+            await modelAPI.deleteTodo(todoID)
         }
     }
 })()

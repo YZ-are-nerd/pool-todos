@@ -5,10 +5,12 @@ import { Todo } from '../../store/Todo';
 import { controllerAPI } from '../../api/controller.api';
 import { ITodosTasks } from '../../api/types';
 import { supabase } from '../../api/client';
+import { BiTrash } from 'react-icons/bi';
 type Props = {
   todo: ITodosTasks
 }
 const TodoCard: React.FC<Props> = ({todo}) => {
+  const [editMode, setEditMode] = useState<boolean>(false)
   const todoData = useRecoilValue(Todo(todo.id))
   const [checked, setChecked] = useState<boolean>(todoData.state)
   const refresh = useRecoilRefresher_UNSTABLE(Todo(todo.id))
@@ -29,9 +31,16 @@ const TodoCard: React.FC<Props> = ({todo}) => {
     .subscribe()
   },[])
   return (
-    <div onClick={() => setChecked(!checked)} className="w-full h-fit flex items-center cursor-pointer gap-2 p-2 rounded-xl bg-neutral-700">
-        <CheckBox checked={checked} setChecked={setChecked} />
-        <p className={`font-semibold ${checked ? 'line-through text-neutral-500' : ''}`}>{todoData.title}</p>
+    <div onContextMenu={e => {e.preventDefault(); setEditMode(!editMode)}} className="w-full h-fit flex items-center gap-2">
+      <div onClick={() => setChecked(!checked)} className="w-full h-fit flex items-center cursor-pointer gap-2 p-2 rounded-xl bg-neutral-700">
+          <CheckBox checked={checked} setChecked={setChecked} />
+          <p className={`font-semibold select-none ${checked ? 'line-through text-neutral-500' : ''}`}>{todoData.title}</p>
+      </div>
+      {
+        editMode ?
+        <button onClick={() => controllerAPI.deleteTodo(todoData.id)} className='p-1 rounded-md bg-red-600 text-red-600 bg-opacity-30'><BiTrash size={20}/></button>
+        : null
+      }
     </div>
   )
 }

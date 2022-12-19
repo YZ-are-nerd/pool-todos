@@ -13,38 +13,25 @@ type Props = {
 const Room: React.FC<Props> = ({roomID, roomName}) => {
     const room = useRecoilValueLoadable(DeskTodos(roomID))
     const refresh = useRecoilRefresher_UNSTABLE(DeskTodos(roomID))
-    if (room.state === 'loading' || !room.getValue()) {
-        return (
-            <div className='w-full h-full flex flex-col gap-2 items-center justify-center'>
-                <BiLoaderAlt className='text-white animate-spin'/>
-            </div>
-        )
-    } 
-    if (room.getValue()) {
-        return (
-            <div className='w-full h-full max-h-[91vh] inline-flex flex-col gap-2 items-center justify-center'>
-                <Helmet>
-                    <title>{roomName}</title>
-                </Helmet>
-                <div className="w-full h-fit flex items-center justify-between border-b border-neutral-700">
-                    <div className="w-fit h-full flex items-center">
-                        <Link to='/'><BiChevronLeft className='text-white' size={24}/></Link>
-                        <h1 className='text-4xl font-bold p-2 rounded-xl cursor-pointer hover:bg-neutral-900'>{roomName}</h1>
-                    </div>
-                    {/* <button className='py-2 px-3 font-semibold text-sm rounded-xl bg-blue-600'>Добавить столбец</button> */}
-                </div>
-                <div className="w-full h-full pb-1 inline-flex overflow-x-auto snap-x snap-mandatory">
-                    <div className="w-fit min-w-full h-full max-h-full flex items-end lg:items-start shrink-0 gap-x-2">
-                        <DesksList refresh={refresh} roomID={roomID} list={room.getValue()!}  />
-                        <NewDeskTodo roomID={roomID} />
-                    </div>
+    return (
+        <div className='w-full h-full max-h-full inline-flex flex-col gap-2 items-center justify-center'>
+            <Helmet>
+                <title>{roomName}</title>
+            </Helmet>
+            <div className="w-full h-fit flex items-center justify-between border-b border-neutral-700">
+                <div className="w-fit h-full flex items-center">
+                    <Link to='/'><BiChevronLeft className='text-white' size={24}/></Link>
+                    <h1 className='text-4xl font-bold p-2 rounded-xl cursor-pointer hover:bg-neutral-900'>{roomName}</h1>
                 </div>
             </div>
-        )
-    }
-    return <div className="w-full h-full flex items-center justify-center">
-        <p>Что-то не так!!!</p>
-    </div>
+            <div className="w-full h-full pb-1 inline-flex overflow-x-auto snap-x snap-mandatory">
+                <div className="w-fit min-w-full h-full max-h-full flex items-end lg:items-start shrink-0 gap-x-2">
+                    <DesksList refresh={refresh} roomID={roomID} list={room.getValue()!}  />
+                    <NewDeskTodo roomID={roomID} />
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default Room

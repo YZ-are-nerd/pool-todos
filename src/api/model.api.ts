@@ -125,6 +125,13 @@ export const modelAPI = (() => {
             })
             console.log(error);
         },
+        deleteTodo: async(todoID: string) => {
+            const { error } = await supabase
+            .from('todo')
+            .delete()
+            .eq('id', todoID)
+            console.log(error);
+        },
         checkUserExistsByID: async(uid: string) => {
             console.log(uid);
             const { data, error } = await supabase

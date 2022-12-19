@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-    font-family: 'Yandex Sans Display';
+    font-family: 'FactorA';
     @apply outline-none transition-all
 }
 h1, h2, h3, h4, h5, h6, p, span, button {
@@ -20,4 +20,21 @@ h1, h2, h3, h4, h5, h6, p, span, button {
 }
 ::-webkit-scrollbar-corner {
     @apply bg-transparent
+}
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(1deg);
+    }
+    75% {
+        transform: rotate(-1deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+.animate-shake {
+    animation: shake .4s linear infinite;
 }

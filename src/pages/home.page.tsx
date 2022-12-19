@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet"
 import HomeBlock from "../components/organisms/HomeBlock"
 const HomePage = () => {
   return (
-    <div className="w-full h-[90.5vh] rounded-xl p-2 gap-3 flex flex-col overflow-hidden bg-neutral-900">
+    <div className="w-full relative h-full rounded-xl p-2 gap-3 flex flex-col overflow-hidden bg-neutral-900">
         <Helmet>
             <title>Домашняя комната</title>
         </Helmet>

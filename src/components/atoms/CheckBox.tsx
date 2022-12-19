@@ -11,8 +11,12 @@ const CheckBox: React.FC<Props> = ({checked, setChecked}) => {
         <Switch
         checked={checked}
         onChange={setChecked}
-        className={`w-4 h-4 rounded ${checked ? 'bg-blue-600': 'bg-neutral-600'}`}
-        >{checked ? <BiCheck/> : null}</Switch>
+        className={`w-4 h-4 rounded border-2 transition-all ${checked ? 'bg-blue-600 border-blue-500': 'bg-neutral-600 border-neutral-500'}`}
+        >
+          <div className="w-full h-full flex items-center justify-center">
+            {checked ? <BiCheck/> : null}
+          </div>
+        </Switch>
     </div>
   )
 }
