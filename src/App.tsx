@@ -1,14 +1,18 @@
-import { Suspense } from "react";
+import { Suspense, useEffect, useLayoutEffect } from "react";
 import { BiLoaderAlt } from "react-icons/bi";
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useNavigate } from "react-router-dom"
 import { useRecoilValueLoadable } from "recoil";
-import UserAvatar from "./components/atoms/UserAvatar";
+import AuthPage from "./pages/auth.page";
 import HomePage from './pages/home.page';
 import RoomPage from "./pages/room.page";
 import { User } from "./store/User";
 
 const App = () => {
   const user = useRecoilValueLoadable(User)
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (user.state === 'hasValue' && !user.getValue()) navigate('/auth');
+  },[])
   if (user.state === 'loading') {
     return <div className="w-screen h-screen flex items-center justify-center">
       <BiLoaderAlt className="animate-spin text-white" />
@@ -18,6 +22,7 @@ const App = () => {
             <Routes>
               <Route path='/' element={<Suspense fallback={<></>}><HomePage /></Suspense>} />
               <Route path='/room/:roomID' element={<Suspense fallback={<></>}><RoomPage /></Suspense>} />
+              <Route path='/auth' element={<AuthPage />} />
             </Routes>
       </div>
     )

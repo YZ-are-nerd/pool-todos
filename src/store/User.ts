@@ -1,13 +1,7 @@
+import { redirect } from 'react-router-dom';
 import { atom } from 'recoil';
 import { controllerAPI } from '../api/controller.api';
 import { UserData } from '../api/types';
-
-
-const getUserProfile = async() => {
-    const user = controllerAPI.checkProfile()
-    if (user) return user
-    return null
-}
 export const User = atom<UserData | null>({
     key: "user",
     default: null,
@@ -17,9 +11,12 @@ export const User = atom<UserData | null>({
                 console.log(val)
             })
         },
-        ({setSelf}) => {
-            getUserProfile()
-            .then((res) => {if (res) setSelf(res)})     
+        ({setSelf}) => async() => {
+            const user = await controllerAPI.checkProfile()
+            console.log('user', user);
+            if (user) {
+                setSelf(user)
+            }
         }
     ]
 })
