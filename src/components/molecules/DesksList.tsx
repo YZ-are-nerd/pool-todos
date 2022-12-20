@@ -1,14 +1,15 @@
 import { Suspense, useLayoutEffect, useState } from 'react';
+import { useRecoilRefresher_UNSTABLE, useRecoilValue } from 'recoil';
 import { supabase } from '../../api/client';
-import { IDeskTodos } from '../../api/types';
 import TodoDeskSkeleton from '../../skeletons/TodoDesk.skeleton';
+import { DeskTodos } from '../../store/RoomDesks';
 import TodoDesk from '../organisms/TodoDesk';
 type Props = {
-  list: IDeskTodos[],
   roomID: string,
-  refresh: () => void
 }
-const DesksList: React.FC<Props> = ({list, roomID, refresh}) => {
+const DesksList: React.FC<Props> = ({roomID}) => {
+  const room = useRecoilValue(DeskTodos(roomID))
+  const refresh = useRecoilRefresher_UNSTABLE(DeskTodos(roomID))
   const [editMode, setEditMode] = useState<boolean>(false)
   useLayoutEffect(() => {
     supabase
@@ -24,8 +25,7 @@ const DesksList: React.FC<Props> = ({list, roomID, refresh}) => {
     return (
       <>
           {
-            
-              list.map((desk) => 
+              room && room.map((desk) => 
               <Suspense key={desk.id + 'skeleton'} fallback={<TodoDeskSkeleton />}>
                 <TodoDesk editMode={editMode} setEditMode={setEditMode} data={desk} key={desk.id} />
               </Suspense>)

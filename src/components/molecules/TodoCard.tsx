@@ -6,10 +6,12 @@ import { controllerAPI } from '../../api/controller.api';
 import { ITodosTasks } from '../../api/types';
 import { supabase } from '../../api/client';
 import { BiTrash } from 'react-icons/bi';
+import { motion } from 'framer-motion'
 type Props = {
-  todo: ITodosTasks
+  todo: ITodosTasks,
+  index: number
 }
-const TodoCard: React.FC<Props> = ({todo}) => {
+const TodoCard: React.FC<Props> = ({todo, index}) => {
   const [editMode, setEditMode] = useState<boolean>(false)
   const todoData = useRecoilValue(Todo(todo.id))
   const [checked, setChecked] = useState<boolean>(todoData.state)
@@ -32,7 +34,8 @@ const TodoCard: React.FC<Props> = ({todo}) => {
   },[])
   return (
     <div onContextMenu={e => {e.preventDefault(); setEditMode(!editMode)}} className="w-full h-fit flex items-center gap-2">
-      <div onClick={() => setChecked(!checked)} className="w-full h-fit flex items-center cursor-pointer gap-2 p-2 rounded-xl bg-neutral-700">
+      <div 
+      onClick={() => setChecked(!checked)} className="w-full h-fit flex items-center cursor-pointer gap-2 p-2 rounded-xl bg-neutral-700">
           <CheckBox checked={checked} setChecked={setChecked} />
           <p className={`font-semibold select-none ${checked ? 'line-through text-neutral-500' : ''}`}>{todoData.title}</p>
       </div>

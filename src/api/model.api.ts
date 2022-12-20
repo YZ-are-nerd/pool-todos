@@ -42,11 +42,22 @@ export const modelAPI = (() => {
             return data as IDeskTodos
         },
         deleteDeskTodo: async(deskID: string) => {
+            const todos = await modelAPI.getTodosByDeskID(deskID)
+            if (todos) {
+                todos.forEach(async(todo) => {
+                    await modelAPI.deleteTodo(todo.id)
+                })
+                const { error } = await supabase
+                .from('desk_todo')
+                .delete()
+                .eq('id', deskID)
+                console.log('after deleted todos', error);
+            }
             const { error } = await supabase
             .from('desk_todo')
             .delete()
             .eq('id', deskID)
-            console.log(error);
+            console.log('no todos, but desk been deleted', error);
         },
         getTodosByDeskID: async(deskID: string) => {
             const { data } = await supabase

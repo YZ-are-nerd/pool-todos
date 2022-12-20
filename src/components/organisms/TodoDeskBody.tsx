@@ -24,6 +24,16 @@ const TodoDeskBody: React.FC<Props> = ({deskID, data}) => {
         }, 1000);
       }
     }
+    const deleteChecked = async() => {
+      if (tasksList.getValue().checkedList && tasksList.getValue().checkedList?.length !== 0) {
+        tasksList.getValue().checkedList!.forEach(async(todo) => {
+          await controllerAPI.deleteTodo(todo.id)
+        });
+        setTimeout(() => {
+          refresh()          
+        }, 1000);
+      }
+    }
     useEffect(() => {
       supabase
       .channel(`public:todo:ref_to_desk=eq.${deskID}`)
@@ -36,7 +46,7 @@ const TodoDeskBody: React.FC<Props> = ({deskID, data}) => {
     },[])
     return (
       <>
-        <div className="w-full h-full overflow-y-auto">
+        <div onContextMenu={e => e.stopPropagation()} className="w-full h-full overflow-y-auto">
           <div className="w-full h-fit flex flex-col shrink-0">
             <div className="w-full h-full flex flex-col overflow-x-auto gap-2">
               <NewTodo deskID={deskID} />
@@ -45,7 +55,7 @@ const TodoDeskBody: React.FC<Props> = ({deskID, data}) => {
             </div>
           </div>
         </div>
-        <TodoDeskToolBar checkAll={checkAll} data={data} />
+        <TodoDeskToolBar deleteChecked={deleteChecked} checkAll={checkAll} data={data} />
       </>
 
     )

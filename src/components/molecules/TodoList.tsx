@@ -12,9 +12,9 @@ type Props = {
 const TodoList: React.FC<Props> = ({list, deskID}) => {
   return (
     <>
-        {list.map((todo) =>
+        {list.map((todo, index) =>
           <Suspense key={todo.id + 'fallback'} fallback={<TodoCardSkeleton todoData={todo}/>}>
-            <TodoCard key={todo.id} todo={todo} />
+            <TodoCard index={index} key={todo.id} todo={todo} />
          </Suspense> 
         )}
     </>

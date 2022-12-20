@@ -23,7 +23,8 @@ const TodoDeskHeader: React.FC<Props> = ({listName, deskID}) => {
             <button onClick={updateTitle} disabled={listName === headerTitle ? true : headerTitle.length < 2 ? true : false} className='p-1 rounded-md bg-neutral-900 bg-opacity-60'><BiSave/></button>
           </div>
           :
-          <h3 onDoubleClick={() => setRenameMode(true)} className="text-2xl font-bold py-1 px-2 rounded-xl cursor-pointer hover:bg-neutral-900 hover:bg-opacity-50">{listName}</h3>
+          <h3 onDoubleClick={() => setRenameMode(true)} 
+          className="text-2xl font-bold py-1 px-2 rounded-xl cursor-pointer line-clamp-1 hover:bg-neutral-900 hover:bg-opacity-50">{listName}</h3>
         }
       </div>
     </div>

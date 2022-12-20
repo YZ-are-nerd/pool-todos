@@ -1,18 +1,15 @@
-import React from 'react'
-import { useRecoilRefresher_UNSTABLE, useRecoilValueLoadable } from 'recoil';
+import React, { Suspense } from 'react'
 import DesksList from '../molecules/DesksList';
 import NewDeskTodo from '../molecules/NewDeskTodo';
 import { Helmet } from 'react-helmet';
-import { DeskTodos } from '../../store/RoomDesks';
-import { BiChevronLeft, BiLoaderAlt } from 'react-icons/bi';
+import { BiChevronLeft } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import TodoDeskSkeleton from '../../skeletons/TodoDesk.skeleton';
 type Props = {
     roomID: string,
     roomName: string,
 }
 const Room: React.FC<Props> = ({roomID, roomName}) => {
-    const room = useRecoilValueLoadable(DeskTodos(roomID))
-    const refresh = useRecoilRefresher_UNSTABLE(DeskTodos(roomID))
     return (
         <div className='w-full h-full max-h-full inline-flex flex-col gap-2 items-center justify-center'>
             <Helmet>
@@ -26,7 +23,9 @@ const Room: React.FC<Props> = ({roomID, roomName}) => {
             </div>
             <div className="w-full h-full pb-1 inline-flex overflow-x-auto snap-x snap-mandatory">
                 <div className="w-fit min-w-full h-full max-h-full flex items-end lg:items-start shrink-0 gap-x-2">
-                    <DesksList refresh={refresh} roomID={roomID} list={room.getValue()!}  />
+                    <Suspense fallback={<TodoDeskSkeleton />}>
+                        <DesksList roomID={roomID}  />
+                    </Suspense>
                     <NewDeskTodo roomID={roomID} />
                 </div>
             </div>

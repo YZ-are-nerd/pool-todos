@@ -1,7 +1,7 @@
 import TodoDeskHeader from '../molecules/TodoDeskHeader';
-import { SetStateAction, Suspense } from 'react';
+import { lazy, SetStateAction, Suspense } from 'react';
 import { IDeskTodos } from '../../api/types';
-import TodoDeskBody from './TodoDeskBody';
+const TodoDeskBody = lazy(() => import('./TodoDeskBody'));
 import TodoDeskBodySkeleton from '../../skeletons/TodoDeskBody.skeleton';
 type Props = {
   data: IDeskTodos,
