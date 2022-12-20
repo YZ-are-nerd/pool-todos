@@ -7,8 +7,9 @@ const AuthPage = () => {
   const user = useRecoilValue(User)
   const navigate = useNavigate()
   useEffect(() => {
-    if (!user) navigate('/');
-  },[])
+    console.log('auth', user);
+    if (user) navigate('/');
+  },[user])
   return (
     <div className='w-full h-full flex items-center justify-center'>
         <Auth />

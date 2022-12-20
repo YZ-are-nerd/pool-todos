@@ -9,10 +9,6 @@ import { User } from "./store/User";
 
 const App = () => {
   const user = useRecoilValueLoadable(User)
-  const navigate = useNavigate()
-  useEffect(() => {
-    if (user.state === 'hasValue' && !user.getValue()) navigate('/auth');
-  },[])
   if (user.state === 'loading') {
     return <div className="w-screen h-screen flex items-center justify-center">
       <BiLoaderAlt className="animate-spin text-white" />
