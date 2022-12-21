@@ -1,4 +1,3 @@
-import React from 'react'
 import HomeBlockHeader from '../atoms/HomeBlockHeader'
 import HomeBlockBody from '../molecules/HomeBlockBody'
 

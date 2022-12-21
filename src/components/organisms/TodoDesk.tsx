@@ -1,4 +1,4 @@
-import TodoDeskHeader from '../molecules/TodoDeskHeader';
+import TodoDeskHeader from '../molecules/TodoDesk/TodoDeskHeader';
 import { lazy, SetStateAction, Suspense } from 'react';
 import { IDeskTodos } from '../../api/types';
 const TodoDeskBody = lazy(() => import('./TodoDeskBody'));

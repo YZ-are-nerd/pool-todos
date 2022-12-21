@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import DesksList from '../molecules/DesksList';
-import NewDeskTodo from '../molecules/NewDeskTodo';
+import NewDeskTodo from '../molecules/TodoDesk/NewDeskTodo';
 import { Helmet } from 'react-helmet';
 import { BiChevronLeft } from 'react-icons/bi';
 import { Link } from 'react-router-dom';

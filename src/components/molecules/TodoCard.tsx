@@ -1,21 +1,20 @@
 import CheckBox from '../atoms/CheckBox';
 import { useEffect, useState } from 'react';
-import { useRecoilValue, useRecoilRefresher_UNSTABLE } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { Todo } from '../../store/Todo';
 import { controllerAPI } from '../../api/controller.api';
 import { ITodosTasks } from '../../api/types';
 import { supabase } from '../../api/client';
 import { BiTrash } from 'react-icons/bi';
-import { motion } from 'framer-motion'
 type Props = {
   todo: ITodosTasks,
-  index: number
+  index: number,
+  changeWatcher: () => Promise<void> 
 }
-const TodoCard: React.FC<Props> = ({todo, index}) => {
+const TodoCard: React.FC<Props> = ({todo, changeWatcher}) => {
   const [editMode, setEditMode] = useState<boolean>(false)
-  const todoData = useRecoilValue(Todo(todo.id))
+  const [todoData, setTodoData] = useRecoilState(Todo(todo.id))
   const [checked, setChecked] = useState<boolean>(todoData.state)
-  const refresh = useRecoilRefresher_UNSTABLE(Todo(todo.id))
   const updateState = async() => {
     await controllerAPI.updateTodoState(todo.id, checked)
   }
@@ -27,7 +26,8 @@ const TodoCard: React.FC<Props> = ({todo, index}) => {
     .channel(`public:todo:id=eq.${todo.id}`)
     .on('postgres_changes', { event: '*', schema: 'public', table: 'todo', filter: `id=eq.${todo.id}` }, payload => {
       if (payload.eventType === 'UPDATE') {
-        refresh()
+        setTodoData(payload.new as ITodosTasks)
+        changeWatcher()
       }
     })
     .subscribe()

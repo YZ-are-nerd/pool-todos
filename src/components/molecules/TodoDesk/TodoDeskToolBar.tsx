@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import { BiCheckDouble, BiListMinus, BiTrash } from 'react-icons/bi'
-import { controllerAPI } from '../../api/controller.api'
-import { IDeskTodos } from '../../api/types'
+import { controllerAPI } from '../../../api/controller.api'
+import { IDeskTodos } from '../../../api/types'
 type Props = {
     data: IDeskTodos,
     checkAll: () => void,
@@ -19,9 +19,6 @@ const TodoDeskToolBar: React.FC<Props> = ({data, checkAll, deleteChecked}) => {
             <BiListMinus size={20}/>
           </button>
         </div>
-        {/* <button className='py-1 px-2 rounded-md flex items-center gap-1 bg-neutral-600'>
-        <BiPencil size={20}/>
-        </button> */}
         <button onClick={() => controllerAPI.deleteDeskTodo(data.id)} 
         className='py-1 px-2 rounded-md flex items-center gap-1 bg-red-500'>
           <BiTrash size={20}/>

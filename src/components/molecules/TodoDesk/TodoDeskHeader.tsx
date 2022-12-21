@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { BiSave } from 'react-icons/bi';
-import { controllerAPI } from '../../api/controller.api';
+import { controllerAPI } from '../../../api/controller.api';
 type Props = {
   listName: string,
   deskID: string,

@@ -1,20 +1,18 @@
-import TodoCard from './TodoCard';
-import { Suspense, useState } from 'react';
-import { BiPlus, BiSave } from 'react-icons/bi';
-import CheckBox from '../atoms/CheckBox';
-import { controllerAPI } from '../../api/controller.api';
+import { lazy, Suspense } from 'react';
 import { ITodosTasks } from '../../api/types';
 import TodoCardSkeleton from '../../skeletons/TodoCard.skeleton';
+const TodoCard = lazy(() => import('./TodoCard'))
 type Props = {
   list: ITodosTasks[],
-  deskID: string
+  deskID: string,
+  changeWatcher: () => Promise<void>
 }
-const TodoList: React.FC<Props> = ({list, deskID}) => {
+const TodoList: React.FC<Props> = ({list, changeWatcher}) => {
   return (
     <>
         {list.map((todo, index) =>
           <Suspense key={todo.id + 'fallback'} fallback={<TodoCardSkeleton todoData={todo}/>}>
-            <TodoCard index={index} key={todo.id} todo={todo} />
+            <TodoCard changeWatcher={changeWatcher} index={index} key={todo.id} todo={todo} />
          </Suspense> 
         )}
     </>
