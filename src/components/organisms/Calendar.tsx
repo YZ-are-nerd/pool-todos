@@ -2,13 +2,16 @@ import { DateTime } from 'luxon'
 import { BiLinkExternal, BiChevronLeft, BiChevronRight } from 'react-icons/bi'
 import { useRecoilValue, useRecoilState } from 'recoil'
 import { CalendarDate, MouthAtom } from '../../store/Calendar'
+import InDevPlaceHolder from '../atoms/InDevPlaceHolder'
 import NewTodo from '../molecules/NewTodo'
 
 const Calendar = () => {
     const dateToCalendar = useRecoilValue(CalendarDate)
     const [month, setMonth] = useRecoilState(MouthAtom)
     return (
-        <div className="w-full md:w-1/2 lg:w-1/3 h-full flex flex-col rounded-xl p-2 gap-2 border-2 border-neutral-800 bg-neutral-900">
+        <div className="w-full md:w-1/2 lg:w-1/3 h-96 lg:h-full 
+        flex flex-col rounded-xl p-2 gap-2 border-2 snap-always snap-center
+         border-neutral-800 bg-neutral-900">
             <div className="w-full h-fit flex items-center justify-between">
                 <div className="w-fit h-full flex items-center gap-2">
                     <h1 className="text-2xl lg:text-4xl font-bold">Cегодня</h1>
@@ -28,7 +31,7 @@ const Calendar = () => {
                 </div>
             </div>
             <div className="w-full h-full flex flex-col">
-                <NewTodo deskID='123' />
+                <InDevPlaceHolder />
             </div>
         </div>
     )

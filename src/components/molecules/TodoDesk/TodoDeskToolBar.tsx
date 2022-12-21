@@ -23,7 +23,7 @@ const TodoDeskToolBar: React.FC<Props> = ({data, checkAll, deleteChecked}) => {
         className='py-1 px-2 rounded-md flex items-center gap-1 bg-red-500'>
           <BiTrash size={20}/>
         </button>
-        <p className='ml-auto text-sm font-semibold text-neutral-400'>
+        <p className='ml-auto select-none text-sm font-semibold text-neutral-400'>
           Создан: {DateTime.fromISO(data.created_at).toLocaleString(DateTime.DATETIME_SHORT)}
         </p>
     </div>
