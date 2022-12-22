@@ -12,7 +12,7 @@ const RoomLink: React.FC<Props> = ({room}) => {
   const stat = useRecoilValue(RoomStat(room.id))
   return (
     <Link to={`/room/${room.id}`}
-    className="w-80 lg:w-96 h-full rounded-xl flex flex-col gap-0 p-2 cursor-pointer text-xl font-bold border-2 text-white border-neutral-800 bg-neutral-900 hover:bg-opacity-80">
+    className="lg:w-[24.5%] w-[99.5%] h-60 rounded-xl flex flex-col gap-0 p-2 cursor-pointer text-xl font-bold border-2 text-white border-neutral-800 bg-neutral-900 hover:bg-opacity-80">
       <div className="w-full h-fit flex items-center justify-between">
         <h3 className='text-2xl font-bold'>{room.title}</h3>
         <button className='p-1'><BiLinkExternal/></button>

@@ -10,7 +10,7 @@ const TodoCardSkeleton: React.FC<Props> = ({todoData}) => {
       scale: 1
     },
     animate: {
-      scale: .85,
+      scale: .95,
       transition: {
         duration: .5
       }

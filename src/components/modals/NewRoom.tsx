@@ -2,16 +2,14 @@ import React, { useState } from 'react'
 import { BiPlus, BiX } from 'react-icons/bi'
 import NewTab from './NewTab'
 type Props = {
-    refresh: () => void
 }
-const NewRoom: React.FC<Props> = ({refresh}) => {
+const NewRoom: React.FC<Props> = ({}) => {
     const [editMode, setEditMode] = useState<boolean>(false)
     const modeOff = () => {
       setEditMode(false)
-      refresh()
     }
     return (
-        <div onClick={() => setEditMode(!editMode)}  className="w-80 lg:w-96 h-full relative rounded-xl flex items-center justify-center cursor-pointer text-xl font-bold text-white bg-neutral-800 hover:bg-opacity-80">
+        <div onClick={() => setEditMode(!editMode)}  className="lg:w-[24.5%] w-[99.5%] h-60 relative rounded-xl flex items-center justify-center cursor-pointer text-xl font-bold text-white bg-neutral-800 hover:bg-opacity-80">
             {
             editMode ? 
             <NewTab modeOff={modeOff} />
