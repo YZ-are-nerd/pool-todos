@@ -20,7 +20,7 @@ const HomePage = () => {
         </Helmet>
         <HomeBlock key={1} />
         <div className="w-full h-full flex lg:pr-0 pr-1 snap-y snap-mandatory overflow-y-auto">
-          <div className="w-full h-fit flex gap-2 lg:flex-row flex-col">
+          <div className="w-full h-full flex gap-2 lg:flex-row flex-col">
             <Calendar/>
             <Trash />
           </div>

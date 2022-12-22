@@ -1,5 +1,5 @@
 import { setRecoil } from 'recoil-nexus';
-import { ITodosTasks } from './../api/types';
+import { ITodosTasks } from '../api/types';
 import { selectorFamily, atomFamily } from 'recoil';
 import { controllerAPI } from '../api/controller.api';
 export const Todo = atomFamily<ITodosTasks, string>({

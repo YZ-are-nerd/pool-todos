@@ -26,7 +26,6 @@ const Room: React.FC<Props> = ({roomID, roomName}) => {
                     <Suspense fallback={<TodoDeskSkeleton />}>
                         <DesksList roomID={roomID}  />
                     </Suspense>
-                    <NewDeskTodo roomID={roomID} />
                 </div>
             </div>
         </div>

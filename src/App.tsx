@@ -1,6 +1,6 @@
-import { Suspense, useEffect, useLayoutEffect } from "react";
+import { Suspense } from "react";
 import { BiLoaderAlt } from "react-icons/bi";
-import { Route, Routes, useNavigate } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { useRecoilValueLoadable } from "recoil";
 import AuthPage from "./pages/auth.page";
 import HomePage from './pages/home.page';

@@ -40,6 +40,10 @@ export const controllerAPI = (() => {
             const res = await modelAPI.updateTodoState(todoID, state)
             return res
         },
+        updateTodoTitle: async(todoID: string, title: string) => {
+            const res = await modelAPI.updateTodoTitle(todoID, title)
+            return res
+        },
         getRoomsByUserID: async(userID: string) => {
             const res = await modelAPI.getRoomsByUserID(userID)
             return res

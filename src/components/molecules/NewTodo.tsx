@@ -11,12 +11,14 @@ const NewTodo: React.FC<Props> = ({deskID}) => {
     const [checked, setChecked] = useState<boolean>(false)
     const [title, setTitle] = useState<string>('')
     const addTodo = async() => {
-      setLoading(true)
-      await controllerAPI.addNewTodo(deskID, checked, title)
-      setLoading(false)
-      setChecked(false)
-      setTitle('')
-      setEditMode(false)
+      if (title.length > 2) {
+        setLoading(true)
+        await controllerAPI.addNewTodo(deskID, checked, title)
+        setLoading(false)
+        setChecked(false)
+        setTitle('')
+        setEditMode(false)
+      }
     }
   return (
     <div onClick={() => setEditMode(!editMode)} className="w-full h-8 rounded-xl flex items-center justify-center cursor-pointer bg-neutral-700 hover:bg-opacity-75">
@@ -24,7 +26,9 @@ const NewTodo: React.FC<Props> = ({deskID}) => {
         editMode ?
         <div onClick={e => e.stopPropagation()} className='w-full h-full flex items-center gap-2 p-2'>
             <CheckBox checked={checked} setChecked={setChecked} />
-            <input autoFocus={true} value={title} onChange={e => setTitle(e.target.value)} placeholder='Какую задачу добавим?'
+            <input autoFocus={true} onKeyUp={e => {if(e.key === 'Enter') addTodo()}}
+            value={title} onChange={e => setTitle(e.target.value)} 
+            placeholder='Какую задачу добавим?'
             className='w-full h-full text-neutral-400 font-semibold bg-transparent' type="text"/>
             {
               loading ?
