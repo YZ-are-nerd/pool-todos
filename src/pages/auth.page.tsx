@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
-import Auth from '../components/templates/Auth'
+import Auth from '../components/Auth/template/Auth'
 import { User } from '../store/User'
 const AuthPage = () => {
   const user = useRecoilValue(User)

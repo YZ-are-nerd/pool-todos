@@ -1,10 +1,10 @@
-import CheckBox from '../atoms/CheckBox';
+import CheckBox from './CheckBox';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { Todo } from '../../store/Todo';
-import { controllerAPI } from '../../api/controller.api';
-import { ITodosTasks } from '../../api/types';
-import { supabase } from '../../api/client';
+import { Todo } from '../../../store/Todo';
+import { controllerAPI } from '../../../api/controller.api';
+import { ITodosTasks } from '../../../api/types';
+import { supabase } from '../../../api/client';
 import { BiPencil, BiSave, BiTrash, BiX } from 'react-icons/bi';
 type Props = {
   todo: ITodosTasks,

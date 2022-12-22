@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react'
-import DesksList from '../molecules/DesksList';
-import NewDeskTodo from '../molecules/TodoDesk/NewDeskTodo';
+import DesksList from '../../lists/DesksList';
+import NewDeskTodo from '../../modals/NewDeskTodo';
 import { Helmet } from 'react-helmet';
 import { BiChevronLeft } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
-import TodoDeskSkeleton from '../../skeletons/TodoDesk.skeleton';
+import TodoDeskSkeleton from '../../../skeletons/TodoDesk.skeleton';
 type Props = {
     roomID: string,
     roomName: string,

@@ -1,4 +1,4 @@
-import { controllerAPI } from '../../api/controller.api';
+import { controllerAPI } from '../../../api/controller.api';
 const Auth = () => {
   return (
     <div className="w-full h-full flex items-center justify-center">

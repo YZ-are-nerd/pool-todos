@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { ITodosTasks } from '../../api/types';
 import TodoCardSkeleton from '../../skeletons/TodoCard.skeleton';
-const TodoCard = lazy(() => import('./TodoCard'))
+const TodoCard = lazy(() => import('../Room/atoms/TodoCard'))
 type Props = {
   list: ITodosTasks[],
   deskID: string,

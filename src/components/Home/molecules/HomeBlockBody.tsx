@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
-import RoomLinkSkeleton from '../../skeletons/RoomLink.skeleton'
-import RoomsLinksList from './RoomsLinksList'
+import RoomLinkSkeleton from '../../../skeletons/RoomLink.skeleton'
+import RoomsLinksList from '../../lists/RoomsLinksList'
 
 const HomeBlockBody = () => {
   return (

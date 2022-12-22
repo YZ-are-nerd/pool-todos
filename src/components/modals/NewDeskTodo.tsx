@@ -1,6 +1,6 @@
 import { BiPlus } from 'react-icons/bi';
 import { useState } from 'react';
-import { controllerAPI } from '../../../api/controller.api';
+import { controllerAPI } from '../../api/controller.api';
 import { useEffect } from 'react';
 
 type Props = {

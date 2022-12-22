@@ -1,4 +1,4 @@
-import HomeBlockHeader from '../atoms/HomeBlockHeader'
+import HomeBlockHeader from '../molecules/HomeBlockHeader'
 import HomeBlockBody from '../molecules/HomeBlockBody'
 
 const HomeBlock = () => {

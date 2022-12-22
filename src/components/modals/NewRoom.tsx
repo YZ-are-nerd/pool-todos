@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BiPlus, BiX } from 'react-icons/bi'
-import NewTab from '../templates/NewTab'
+import NewTab from './NewTab'
 type Props = {
     refresh: () => void
 }
