@@ -36,6 +36,10 @@ export const controllerAPI = (() => {
             const res = await modelAPI.updateListName(deskID, title)
             return res
         },
+        updateRoomName: async(roomID: string, title: string) => {
+            const res = await modelAPI.updateRoomName(roomID, title)
+            return res
+        },
         updateTodoState: async(todoID: string, state: boolean) => {
             const res = await modelAPI.updateTodoState(todoID, state)
             return res

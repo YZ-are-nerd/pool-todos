@@ -61,7 +61,7 @@ const TodoCard: React.FC<Props> = ({todo, changeWatcher}) => {
   } else return (
     <div onContextMenu={e => {e.preventDefault(); setEditMode(!editMode)}} className="w-full h-fit flex items-center gap-2">
       <div 
-      onClick={() => setChecked(!checked)} className="w-full h-fit flex items-center cursor-pointer gap-2 p-2 rounded-xl bg-neutral-700">
+      onClick={() => setChecked(!checked)} className="w-full h-fit flex items-center cursor-pointer gap-2 p-2 rounded-xl bg-neutral-700 hover:bg-opacity-80">
           <CheckBox checked={checked} setChecked={setChecked} />
           <p className={`font-semibold select-none ${checked ? 'line-through text-neutral-500' : ''}`}>{todoData.title}</p>
       </div>

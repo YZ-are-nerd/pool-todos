@@ -85,6 +85,15 @@ export const modelAPI = (() => {
             .eq('id', deskID)
             console.log(error);
         },
+        updateRoomName: async(roomID: string, title: string) => {
+            const { error } = await supabase
+            .from('rooms')
+            .update({
+                title: title
+            })
+            .eq('id', roomID)
+            console.log(error);
+        },
         updateTodoState: async(todoID: string, state: boolean) => {
             const { error } = await supabase
             .from('todo')
