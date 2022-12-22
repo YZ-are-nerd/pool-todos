@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { BiX, BiSave, BiPlus, BiLoaderAlt } from 'react-icons/bi'
 import { controllerAPI } from '../../api/controller.api'
+import TextArea from '../global/TextArea'
 import CheckBox from '../Room/atoms/CheckBox'
 type Props = {
     deskID: string
@@ -21,15 +22,14 @@ const NewTodo: React.FC<Props> = ({deskID}) => {
       }
     }
   return (
-    <div onClick={() => setEditMode(!editMode)} className="w-full h-8 rounded-xl flex items-center justify-center cursor-pointer bg-neutral-700 hover:bg-opacity-75">
+    <div onClick={() => setEditMode(!editMode)} className="w-full h-fit rounded-xl flex items-center justify-center cursor-pointer bg-neutral-700 hover:bg-opacity-75">
         {
         editMode ?
         <div onClick={e => e.stopPropagation()} className='w-full h-full flex items-center gap-2 p-2'>
             <CheckBox checked={checked} setChecked={setChecked} />
-            <input autoFocus={true} onKeyUp={e => {if(e.key === 'Enter') addTodo()}}
-            value={title} onChange={e => setTitle(e.target.value)} 
-            placeholder='Какую задачу добавим?'
-            className='w-full h-full text-neutral-400 font-semibold bg-transparent' type="text"/>
+            <TextArea autofocus={true} onkeyup={() => addTodo()}
+            value={title} setValue={setTitle} 
+            placeholder='Какую задачу добавим?'/>
             {
               loading ?
               <BiLoaderAlt className='animate-spin text-white' />
@@ -38,7 +38,7 @@ const NewTodo: React.FC<Props> = ({deskID}) => {
               className='p-1 rounded-lg text-neutral-400 bg-neutral-800 disabled:text-neutral-600'>{title.length < 2 ? <BiX/> :<BiSave/>}</button>
             }
         </div>
-        : <BiPlus className='text-white' size={24} />
+        : <BiPlus className='my-1 text-white' size={24} />
         }
     </div>
   )
