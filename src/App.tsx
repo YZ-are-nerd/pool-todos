@@ -14,7 +14,7 @@ const App = () => {
       <BiLoaderAlt className="animate-spin text-white" />
     </div>
   } else return (
-      <div className="w-screen h-screen max-h-screen inline-flex flex-col overflow-hidden p-2 gap-2 bg-black">
+      <div className="w-screen h-screen inline-flex flex-col p-2 gap-2 bg-black">
             <Routes>
               <Route path='/' element={<Suspense fallback={<></>}><HomePage /></Suspense>} />
               <Route path='/room/:roomID' element={<Suspense fallback={<></>}><RoomPage /></Suspense>} />

@@ -24,6 +24,9 @@ export const controllerAPI = (() => {
         deleteDeskTodo: async(deskID: string) => {
             await modelAPI.deleteDeskTodo(deskID)
         },
+        deleteRoom: async(roomID: string) => {
+            await modelAPI.deleteRoom(roomID)
+        },
         getTodosByDeskID: async(deskID: string) => {
             const res = await modelAPI.getTodosByDeskID(deskID)
             return res

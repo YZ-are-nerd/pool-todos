@@ -41,24 +41,6 @@ export const modelAPI = (() => {
             .single()
             return data as IDeskTodos
         },
-        deleteDeskTodo: async(deskID: string) => {
-            const todos = await modelAPI.getTodosByDeskID(deskID)
-            if (todos) {
-                todos.forEach(async(todo) => {
-                    await modelAPI.deleteTodo(todo.id)
-                })
-                const { error } = await supabase
-                .from('desk_todo')
-                .delete()
-                .eq('id', deskID)
-                console.log('after deleted todos', error);
-            }
-            const { error } = await supabase
-            .from('desk_todo')
-            .delete()
-            .eq('id', deskID)
-            console.log('no todos, but desk been deleted', error);
-        },
         getTodosByDeskID: async(deskID: string) => {
             const { data } = await supabase
             .from('todo')
@@ -158,6 +140,42 @@ export const modelAPI = (() => {
             .delete()
             .eq('id', todoID)
             console.log(error);
+        },
+        deleteRoom: async(roomID: string) => {
+            const desks = await modelAPI.getDeskTodosByID(roomID)
+            if (desks) {
+                desks.forEach(async(desk) => {
+                    await modelAPI.deleteDeskTodo(desk.id)
+                })
+                const { error } = await supabase
+                .from('rooms')
+                .delete()
+                .eq('id', roomID)
+                console.log(error);
+            }
+            const { error } = await supabase
+            .from('rooms')
+            .delete()
+            .eq('id', roomID)
+            console.log(error);
+        },
+        deleteDeskTodo: async(deskID: string) => {
+            const todos = await modelAPI.getTodosByDeskID(deskID)
+            if (todos) {
+                todos.forEach(async(todo) => {
+                    await modelAPI.deleteTodo(todo.id)
+                })
+                const { error } = await supabase
+                .from('desk_todo')
+                .delete()
+                .eq('id', deskID)
+                console.log('after deleted todos', error);
+            }
+            const { error } = await supabase
+            .from('desk_todo')
+            .delete()
+            .eq('id', deskID)
+            console.log('no todos, but desk been deleted', error);
         },
         checkUserExistsByID: async(uid: string) => {
             console.log(uid);
