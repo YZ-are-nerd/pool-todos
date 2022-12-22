@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { BiX, BiSave, BiPlus, BiLoaderAlt } from 'react-icons/bi'
 import { controllerAPI } from '../../api/controller.api'
-import CheckBox from '../atoms/CheckBox'
+import CheckBox from '../Room/atoms/CheckBox'
 type Props = {
     deskID: string
 }

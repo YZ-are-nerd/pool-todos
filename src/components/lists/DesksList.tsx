@@ -4,8 +4,8 @@ import { supabase } from '../../api/client';
 import { controllerAPI } from '../../api/controller.api';
 import TodoDeskSkeleton from '../../skeletons/TodoDesk.skeleton';
 import { DeskTodos } from '../../store/RoomDesks';
-import TodoDesk from '../organisms/TodoDesk';
-import NewDeskTodo from './TodoDesk/NewDeskTodo';
+import TodoDesk from '../Room/organisms/TodoDesk';
+import NewDeskTodo from '../modals/NewDeskTodo';
 type Props = {
   roomID: string,
 }

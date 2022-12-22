@@ -2,9 +2,9 @@ import { useEffect } from "react"
 import { Helmet } from "react-helmet"
 import { useNavigate } from "react-router-dom"
 import { useRecoilValue } from "recoil"
-import Calendar from "../components/organisms/Calendar"
-import HomeBlock from "../components/organisms/HomeBlock"
-import Trash from "../components/organisms/Trash"
+import Calendar from "../components/Home/organisms/Calendar"
+import HomeBlock from "../components/Home/organisms/HomeBlock"
+import Trash from "../components/Home/organisms/Trash"
 import { User } from "../store/User"
 const HomePage = () => {
   const user = useRecoilValue(User)

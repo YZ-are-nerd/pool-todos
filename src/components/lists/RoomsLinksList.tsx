@@ -2,8 +2,8 @@ import { Suspense } from 'react'
 import { useRecoilRefresher_UNSTABLE, useRecoilValue } from 'recoil'
 import RoomLinkSkeleton from '../../skeletons/RoomLink.skeleton'
 import { UserRooms } from '../../store/UserRooms'
-import RoomLink from '../atoms/RoomLink'
-import NewRoom from './NewRoom'
+import RoomLink from '../Home/atoms/RoomLink'
+import NewRoom from '../modals/NewRoom'
 
 const RoomsLinksList = () => {
   const rooms = useRecoilValue(UserRooms)

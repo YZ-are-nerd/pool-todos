@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { useParams } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
-import Room from '../components/templates/Room'
+import Room from '../components/Room/template/Room'
 import RoomSkeleton from '../skeletons/Room.skeleton'
 import { UserRoom } from '../store/UserRoom'
 

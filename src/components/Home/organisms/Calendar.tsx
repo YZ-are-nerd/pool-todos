@@ -1,9 +1,8 @@
 import { DateTime } from 'luxon'
 import { BiLinkExternal, BiChevronLeft, BiChevronRight } from 'react-icons/bi'
 import { useRecoilValue, useRecoilState } from 'recoil'
-import { CalendarDate, MouthAtom } from '../../store/Calendar'
-import InDevPlaceHolder from '../atoms/InDevPlaceHolder'
-import NewTodo from '../molecules/NewTodo'
+import { CalendarDate, MouthAtom } from '../../../store/Calendar'
+import InDevPlaceHolder from '../../global/InDevPlaceHolder'
 
 const Calendar = () => {
     const dateToCalendar = useRecoilValue(CalendarDate)

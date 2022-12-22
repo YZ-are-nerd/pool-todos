@@ -2,8 +2,8 @@ import React from 'react'
 import { BiLinkExternal } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
-import { IRoom } from '../../api/types'
-import { RoomStat } from '../../store/RoomStat'
+import { IRoom } from '../../../api/types'
+import { RoomStat } from '../../../store/RoomStat'
 import ListStatCard from './ListStatCard'
 type Props = {
     room: IRoom

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import { IDeskTodos } from '../../api/types'
-import { ListStat } from '../../store/RoomStat'
+import { IDeskTodos } from '../../../api/types'
+import { ListStat } from '../../../store/RoomStat'
 type Props = {
     list: IDeskTodos
 }

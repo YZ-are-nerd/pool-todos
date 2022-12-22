@@ -1,5 +1,5 @@
 import { BiLinkExternal } from "react-icons/bi"
-import InDevPlaceHolder from "../atoms/InDevPlaceHolder"
+import InDevPlaceHolder from "../../global/InDevPlaceHolder"
 
 const Trash = () => {
   return (

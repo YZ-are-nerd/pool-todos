@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useRecoilValueLoadable, useRecoilRefresher_UNSTABLE, useRecoilCallback, useRecoilValue } from 'recoil'
-import { supabase } from '../../api/client'
-import { controllerAPI } from '../../api/controller.api'
-import { IDeskTodos } from '../../api/types'
-import { TodoListAtom } from '../../store/TodoList'
-import NewTodo from '../molecules/NewTodo'
-import TodoDeskToolBar from '../molecules/TodoDesk/TodoDeskToolBar'
-import TodoList from '../molecules/TodoList'
+import { supabase } from '../../../api/client'
+import { controllerAPI } from '../../../api/controller.api'
+import { IDeskTodos } from '../../../api/types'
+import { TodoListAtom } from '../../../store/TodoList'
+import TodoList from '../../lists/TodoList'
+import NewTodo from '../../modals/NewTodo'
+import TodoDeskToolBar from './TodoDeskToolBar'
 type Props = {
     deskID: string,
     data: IDeskTodos
