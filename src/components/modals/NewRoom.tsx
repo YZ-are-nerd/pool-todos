@@ -9,7 +9,7 @@ const NewRoom: React.FC<Props> = ({}) => {
       setEditMode(false)
     }
     return (
-        <div onClick={() => setEditMode(!editMode)}  className="lg:w-[24.5%] w-[99.5%] h-60 relative rounded-xl flex items-center justify-center cursor-pointer text-xl font-bold text-white bg-neutral-800 hover:bg-opacity-80">
+        <div onClick={() => setEditMode(!editMode)}  className="w-full h-full relative rounded-xl flex items-center justify-center cursor-pointer text-xl font-bold text-white bg-neutral-800 hover:bg-opacity-80">
             {
             editMode ? 
             <NewTab modeOff={modeOff} />

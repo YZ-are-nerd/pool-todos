@@ -13,9 +13,9 @@ const RoomsLinksList = () => {
   const rooms = useRecoilValue(LimitedUserRooms(user?.id!))
   const changeWatcher = useRecoilCallback(({snapshot, set}) => async () => {
     const rooms = await controllerAPI.getRoomsByUserID(user?.id!)
-    const snap = snapshot.getLoadable(UserRooms(user?.id!))
+    const snap = snapshot.getLoadable(LimitedUserRooms(user?.id!))
     if (rooms?.length !== snap.getValue()?.length) {
-      set(UserRooms(user?.id!), rooms)
+      set(LimitedUserRooms(user?.id!), rooms)
     }
   })
   useEffect(() => {

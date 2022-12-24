@@ -8,7 +8,7 @@ const SideBar = () => {
     const [wideMode, setWideMode] = useRecoilState(SideBarAtom)
     const [, cancel] = useDebounce(
         () => {
-        setWideMode(wideMode)
+            setWideMode(wideMode)
         },
         2000, [wideMode]
     );
@@ -47,8 +47,8 @@ const SideBar = () => {
 
                     <div className="w-full flex flex-col gap-2">
                         <SideBarButton key='btn-1' title='Домой' link="/" icon={<BiHome className="text-neutral-400" size={18} />} />
-                        <SideBarButton key='btn-2' title='Статистика' link="2" icon={<BiBarChartAlt2 className="text-neutral-400" size={18} />} />
-                        <SideBarButton key='btn-3' title='Комнаты' link="4" icon={<BiArchive className="text-neutral-400" size={18} />} />
+                        <SideBarButton key='btn-2' title='Статистика' link="/statictic" icon={<BiBarChartAlt2 className="text-neutral-400" size={18} />} />
+                        <SideBarButton key='btn-3' title='Комнаты' link="/rooms" icon={<BiArchive className="text-neutral-400" size={18} />} />
                     </div>
                 </div>
                 <hr className="border-neutral-600" />
