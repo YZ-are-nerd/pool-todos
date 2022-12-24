@@ -1,16 +1,16 @@
 import { Suspense, useEffect } from 'react'
-import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilCallback, useRecoilValue } from 'recoil'
 import { supabase } from '../../api/client'
 import { controllerAPI } from '../../api/controller.api'
 import RoomLinkSkeleton from '../../skeletons/RoomLink.skeleton'
 import { User } from '../../store/User'
-import { UserRooms } from '../../store/UserRooms'
+import { LimitedUserRooms, UserRooms } from '../../store/UserRooms'
 import RoomLink from '../Home/atoms/RoomLink'
-import NewRoom from '../modals/NewRoom'
+// import NewRoom from '../modals/NewRoom'
 
 const RoomsLinksList = () => {
   const user = useRecoilValue(User)
-  const rooms = useRecoilValue(UserRooms(user?.id!))
+  const rooms = useRecoilValue(LimitedUserRooms(user?.id!))
   const changeWatcher = useRecoilCallback(({snapshot, set}) => async () => {
     const rooms = await controllerAPI.getRoomsByUserID(user?.id!)
     const snap = snapshot.getLoadable(UserRooms(user?.id!))
@@ -35,7 +35,7 @@ const RoomsLinksList = () => {
                 <RoomLink key={room.id} room={room} />
             </Suspense>
         )}
-        <NewRoom />
+        {/* <NewRoom /> */}
     </>
   )
 }

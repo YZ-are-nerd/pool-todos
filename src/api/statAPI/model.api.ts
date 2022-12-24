@@ -1,3 +1,4 @@
+import { IListStats, ITodosStats } from './../types';
 import { supabase } from "../client"
 import { IDeskTodos, ITodosTasks } from "../types"
 
@@ -34,22 +35,18 @@ export const modelAPI = (() => {
         getRoomStatistics: async(roomId: string) => {
             const count = await modelAPI.getListsCount(roomId)
             const lists = await modelAPI.getLists(roomId)
-            const stats = {
-                lists: {
-                    count: count,
-                    listsData: lists
-                }
+            const stats: IListStats = {
+                count: count,
+                data: lists
             }
             return stats
         },
         getListStatistics: async(listID: string) => {
             const count = await modelAPI.getTodosCount(listID)
             const todos = await modelAPI.getTodos(listID)
-            const stats = {
-                todos: {
-                    count: count,
-                    todosData: todos
-                }
+            const stats: ITodosStats = {
+                count: count,
+                data: todos
             }
             return stats
         }

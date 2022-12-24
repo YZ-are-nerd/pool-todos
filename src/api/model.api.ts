@@ -98,6 +98,15 @@ export const modelAPI = (() => {
             if (data) return data as IRoom[]
             return null
         },
+        getLimitedRoomsByUserID: async(userID: string, limit: number) => {
+            const { data } = await supabase
+            .from('rooms')
+            .select()
+            .eq('room_owner', userID)
+            .limit(limit)
+            if (data) return data as IRoom[]
+            return null
+        },
         getRoomByID: async(ID: string) => {
             const { data } = await supabase
             .from('rooms')

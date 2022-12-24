@@ -55,6 +55,10 @@ export const controllerAPI = (() => {
             const res = await modelAPI.getRoomsByUserID(userID)
             return res
         },
+        getLimitedRoomsByUserID: async(userID: string, limit: number) => {
+            const res = await modelAPI.getLimitedRoomsByUserID(userID, limit)
+            return res
+        },
         getRoomByID: async(ID: string) => {
             const res = await modelAPI.getRoomByID(ID)
             return res
