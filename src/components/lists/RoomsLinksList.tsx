@@ -1,4 +1,5 @@
 import { Suspense, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useRecoilCallback, useRecoilValue } from 'recoil'
 import { supabase } from '../../api/client'
 import { controllerAPI } from '../../api/controller.api'
@@ -20,7 +21,7 @@ const RoomsLinksList = () => {
   })
   useEffect(() => {
     supabase
-    .channel(`public:rooms:room_owner=eq.${user?.id}`)
+    .channel(`public:rooms:room_owner=eq.${user?.id}1`)
     .on('postgres_changes', { event: '*', schema: 'public', table: 'rooms', filter: `room_owner=eq.${user?.id}` }, payload => {
       if (payload.eventType === 'DELETE' || payload.eventType === 'INSERT') {
         changeWatcher()
@@ -28,7 +29,14 @@ const RoomsLinksList = () => {
     })
     .subscribe()
   },[])
-  return (
+  if (rooms && rooms.length === 0) {
+    return (
+      <div className="w-full h-full col-span-3 flex flex-col gap-2 items-center justify-center rounded-xl border-2 border-dashed border-neutral-700">
+        <p className='text-neutral-500'>У вас нет комнат</p>
+        <Link to='/rooms' className='text-blue-500'>Перейти для создания комнаты</Link>
+      </div>
+    )
+  } else return (
     <>
         {rooms && rooms.map((room) => 
             <Suspense key={room.id + 'skeleton'} fallback={<RoomLinkSkeleton/>}>

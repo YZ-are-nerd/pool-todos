@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { Helmet } from "react-helmet"
 import { useNavigate } from "react-router-dom"
 import { useRecoilValue } from "recoil"
-import SideBar from "../components/global/sidebar/templates/SideBar"
+import UserBar from "../components/global/mobilebar/molecules/UserBar"
 import HomeBlock from "../components/Home/organisms/HomeBlock"
 import { User } from "../store/User"
 const HomePage = () => {
@@ -22,6 +22,7 @@ const HomePage = () => {
             <HomeBlock key={1} />
           </div>
         </div>
+        <UserBar />
         {/* <div className="w-full h-screen flex shrink-0 lg:pr-0 pr-1 snap-y snap-mandatory overflow-y-auto"> */}
           {/* <div className="w-full h-full flex gap-2 lg:flex-row flex-col"> */}
             {/* <Calendar/> */}

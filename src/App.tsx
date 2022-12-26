@@ -3,6 +3,7 @@ import { BiLoaderAlt } from "react-icons/bi";
 import { Route, Routes } from "react-router-dom"
 import { useRecoilValueLoadable } from "recoil";
 import HomePageSkeleton from "./skeletons/pages/Home.page";
+import RoomSkeleton from "./skeletons/Room.skeleton";
 const SideBar = lazy(() => import('./components/global/sidebar/templates/SideBar'))
 const AuthPage = lazy(() => import('./pages/auth.page'))
 const HomePage = lazy(() => import('./pages/home.page'))
@@ -23,9 +24,9 @@ const App = () => {
         </Suspense>
         <Routes>
           <Route path='/' element={<Suspense fallback={<HomePageSkeleton/>}><HomePage /></Suspense>} />
-          <Route path='/room/:roomID' element={<Suspense fallback={<></>}><RoomPage /></Suspense>} />
+          <Route path='/room/:roomID' element={<Suspense fallback={<RoomSkeleton/>}><RoomPage /></Suspense>} />
           <Route path='/rooms' element={<Suspense fallback={<></>}><RoomsPage/></Suspense>} />
-          <Route path='/auth' element={<AuthPage />} />
+          <Route path='/auth' element={<Suspense fallback={<></>}><AuthPage /></Suspense>} />
         </Routes>
       </div>
     )

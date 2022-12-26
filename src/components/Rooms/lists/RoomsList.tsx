@@ -31,7 +31,9 @@ const RoomsList = () => {
     return (
         <>
             {
-                rooms && rooms.map((room) => <Suspense fallback={<RoomLinkSkeleton/>}><RoomLink key={room.id} room={room} /></Suspense>)
+                rooms && rooms.map((room) => <Suspense key={room.id} fallback={<RoomLinkSkeleton/>}>
+                  <RoomLink key={room.id} room={room} />
+                </Suspense>)
             }
             {rooms && rooms.length !== 24 && <NewRoom/>}
         </>

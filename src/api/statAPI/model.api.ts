@@ -1,6 +1,6 @@
-import { IListStats, ITodosStats } from './../types';
+import { IListStats, ITodosStats, ITodosTasks } from './../types';
 import { supabase } from "../client"
-import { IDeskTodos, ITodosTasks } from "../types"
+import { IDeskTodos } from "../types"
 
 export const modelAPI = (() => {
     return {

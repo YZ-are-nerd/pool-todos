@@ -11,7 +11,6 @@ type Props = {
 }
 const DesksList: React.FC<Props> = ({roomID}) => {
   const room = useRecoilValue(DeskTodos(roomID))
-  const refresh = useRecoilRefresher_UNSTABLE(DeskTodos(roomID))
   const listWatcher = useRecoilCallback(({snapshot, set}) => async () => {
     const lists = await controllerAPI.getDeskTodosByID(roomID)
     const snap = snapshot.getLoadable(DeskTodos(roomID))
