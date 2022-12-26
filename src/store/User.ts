@@ -5,7 +5,7 @@ import { controllerAPI } from '../api/controller.api';
 export const User = atom<UserData | null>({
     key: 'User',
     default: selector({
-        key: "UserSelecto",
+        key: "UserSelector",
         get: async() => {
             const user = await controllerAPI.checkProfile()
             return user
