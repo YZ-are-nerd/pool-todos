@@ -24,3 +24,17 @@ export interface IRoom {
     created_at: string,
     title: string
 }
+
+// stats
+export interface IRoomStats {
+    count: number | null,
+    data: IRoom[]
+}
+export interface IListStats {
+    count: number | null,
+    data: IDeskTodos[]
+}
+export interface ITodosStats {
+    count: number | null,
+    data: ITodosTasks[]
+}

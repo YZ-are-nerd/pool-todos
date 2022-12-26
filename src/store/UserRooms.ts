@@ -18,16 +18,33 @@ export const UserRooms = atomFamily<IRoom[] | null, string>({
         },
     })
 })
-
-// export const UserRooms = selector({
-//     key: "userRooms",
-//     get: async({get}) => {
-//         const user = get(User)
-//         if (user) {
-//             const rooms = await controllerAPI.getRoomsByUserID(user.id)
-//             console.log(rooms);
-//             return rooms
-//         }
-//         return null
-//     }
-// })
+export const LimitedUserRooms = atomFamily<IRoom[] | null, string>({
+    key: 'userRoomsLimited',
+    default: selectorFamily({
+        key: "userRoomsSelectorLimited",
+        get: (id: string) => async({get}) => {
+            const user = get(User)
+            if (user) {
+                const deskTodos = await controllerAPI.getLimitedRoomsByUserID(id, 3)
+                console.log(deskTodos);
+                return deskTodos
+            }    
+            return null
+        },
+    })
+})
+export const LimitedUserRoomsGrid = atomFamily<IRoom[] | null, string>({
+    key: 'userRoomsLimitedGrid',
+    default: selectorFamily({
+        key: "userRoomsSelectorLimitedGrid",
+        get: (id: string) => async({get}) => {
+            const user = get(User)
+            if (user) {
+                const deskTodos = await controllerAPI.getLimitedRoomsByUserID(id, 24)
+                console.log(deskTodos);
+                return deskTodos
+            }    
+            return null
+        },
+    })
+})

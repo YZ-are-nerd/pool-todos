@@ -21,7 +21,7 @@ const NewDeskTodo: React.FC<Props> = ({roomID}) => {
     },[editMode])
     if (editMode) {
         return (
-            <div id='newList' onClick={() => setEditMode(!editMode)} className="w-[370px] lg:w-3/12 h-fit snap-always snap-center shrink-0 rounded-xl flex flex-col p-2 bg-neutral-800">
+            <div id='newList' onClick={() => setEditMode(!editMode)} className="w-[370px] lg:w-[460px] h-fit snap-always snap-center shrink-0 rounded-xl flex flex-col p-2 bg-neutral-800">
                 <div onClick={e => e.stopPropagation()} className="w-full h-full flex flex-col gap-2">
                     <h1 className='text-4xl font-bold'>Новый список</h1>
                     <input placeholder="Как назовете список?" value={listName} onChange={e => setListName(e.target.value)}
@@ -37,7 +37,7 @@ const NewDeskTodo: React.FC<Props> = ({roomID}) => {
             </div>
         )
     } else return (
-        <div onClick={() => setEditMode(!editMode)} className="w-[370px] lg:w-3/12 h-full snap-always snap-center shrink-0 cursor-pointer gap-1 rounded-xl flex items-center justify-center bg-neutral-800">
+        <div onClick={() => setEditMode(!editMode)} className="w-[370px] lg:w-[460px] h-full snap-always snap-center shrink-0 cursor-pointer gap-1 rounded-xl flex items-center justify-center bg-neutral-800">
             <BiPlus className='text-white' size={20}/>
             <p className='font-semibold text-sm'>Добавить новый столбец</p>
         </div>

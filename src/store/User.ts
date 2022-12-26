@@ -1,10 +1,14 @@
-import { selector } from 'recoil';
+import { UserData } from './../api/types';
+import { selector, atom } from 'recoil';
 import { controllerAPI } from '../api/controller.api';
 
-export const User = selector({
-    key: "User",
-    get: async() => {
-        const user = await controllerAPI.checkProfile()
-        return user
-    }
+export const User = atom<UserData | null>({
+    key: 'User',
+    default: selector({
+        key: "UserSelecto",
+        get: async() => {
+            const user = await controllerAPI.checkProfile()
+            return user
+        }
+    })
 })

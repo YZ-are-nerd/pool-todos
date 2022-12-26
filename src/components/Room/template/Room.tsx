@@ -22,7 +22,7 @@ const Room: React.FC<Props> = ({roomID, roomName}) => {
       setRenameMode(false)
     }
     return (
-        <div className='w-full h-full max-h-full inline-flex flex-col gap-2 items-center justify-center'>
+        <div className='w-full h-full max-w-7xl mx-auto inline-flex flex-col gap-2 items-center justify-center'>
             <Helmet>
                 <title>{roomName}</title>
             </Helmet>
@@ -46,8 +46,8 @@ const Room: React.FC<Props> = ({roomID, roomName}) => {
                     <BiTrash size={20}/>
                 </button>
             </div>
-            <div className="w-full h-full pb-1 inline-flex overflow-x-auto snap-x snap-mandatory">
-                <div className="w-fit min-w-full h-full max-h-full flex items-end lg:items-start shrink-0 gap-x-2">
+            <div className="w-full h-full pb-1 inline-flex overflow-x-auto snap-x snap-mandatory rounded-xl">
+                <div className="w-fit h-full max-h-full flex items-end lg:items-start shrink-0 gap-x-2">
                     <Suspense fallback={<TodoDeskSkeleton />}>
                         <DesksList roomID={roomID}  />
                     </Suspense>
