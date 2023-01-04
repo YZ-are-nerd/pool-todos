@@ -1,4 +1,3 @@
-import { setRecoil } from 'recoil-nexus';
 import { atomFamily, selectorFamily } from 'recoil';
 import { controllerAPI } from '../api/controller.api';
 import { ITodosTasks } from '../api/types';

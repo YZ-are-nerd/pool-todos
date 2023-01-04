@@ -11,7 +11,7 @@ const TodoDesk: React.FC<Props> = ({data}) => {
       <div className="w-[370px] lg:w-[460px] shrink-0 h-full flex flex-col gap-2">
         <div 
         className={`w-full h-full snap-always snap-center
-        shrink-0 rounded-xl p-2 gap-2 inline-flex flex-col border-2 border-neutral-700 bg-neutral-800`}>
+        shrink-0 rounded-xl p-2 gap-2 inline-flex flex-col border-2 border-neutral-800 bg-neutral-900`}>
             <TodoDeskHeader deskID={data.id}  listName={data.title} />
             <Suspense fallback={<TodoDeskBodySkeleton />}>
               <TodoDeskBody data={data} deskID={data.id} />

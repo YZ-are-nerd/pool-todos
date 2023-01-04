@@ -62,7 +62,7 @@ const TodoDeskBody: React.FC<Props> = ({deskID, data}) => {
       <>
         <div onContextMenu={e => {e.stopPropagation(); changeWatcher()}} className="w-full h-full overflow-y-auto">
           <div className="w-full h-fit flex flex-col shrink-0">
-            <div className="w-full h-full flex flex-col overflow-x-auto gap-2">
+            <div className="w-full h-full flex flex-col overflow-x-auto gap-2 pr-1">
               <NewTodo deskID={deskID} />
               <TodoList changeWatcher={changeWatcher} deskID={deskID} list={tasksList.unCheckedList!} />
               <TodoList changeWatcher={changeWatcher} deskID={deskID} list={tasksList.checkedList!} />

@@ -1,6 +1,7 @@
 import React from 'react'
 import { ITodosTasks } from '../api/types'
 import { motion } from 'framer-motion'
+import { BiLoaderAlt } from 'react-icons/bi'
 type Props = {
     todoData: ITodosTasks
 }
@@ -18,8 +19,8 @@ const TodoCardSkeleton: React.FC<Props> = ({todoData}) => {
   }
   return (
     <motion.div variants={cardVars} initial='initial' animate='animate' 
-    className="w-full h-fit flex items-center cursor-pointer gap-2 p-2 rounded-xl bg-neutral-700">
-        <div className="w-4 h-4 shrink-0 rounded bg-neutral-600"></div>
+    className="w-full h-fit flex items-center cursor-pointer gap-2 p-2 rounded-xl bg-neutral-800">
+        <BiLoaderAlt className='text-neutral-500 animate-spin' size={20} />
         <p className='font-semibold text-neutral-500'>{todoData.title}</p>
     </motion.div>
   )

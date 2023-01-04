@@ -22,7 +22,7 @@ const NewTodo: React.FC<Props> = ({deskID}) => {
       }
     }
   return (
-    <div onClick={() => setEditMode(!editMode)} className="w-full h-fit rounded-xl flex items-center justify-center cursor-pointer bg-neutral-700 hover:bg-opacity-75">
+    <div onClick={() => setEditMode(!editMode)} className="w-full h-fit rounded-xl flex items-center justify-center cursor-pointer bg-neutral-800 hover:bg-opacity-75">
         {
         editMode ?
         <div onClick={e => e.stopPropagation()} className='w-full h-full flex items-center gap-2 p-2'>

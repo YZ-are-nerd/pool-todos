@@ -22,7 +22,7 @@ const Room: React.FC<Props> = ({roomID, roomName}) => {
       setRenameMode(false)
     }
     return (
-        <div className='w-full h-full max-w-7xl mx-auto inline-flex flex-col gap-2 items-center justify-center'>
+        <div className='w-full h-full max-w-[95vw] mx-auto inline-flex flex-col gap-2 items-center justify-center'>
             <Helmet>
                 <title>{roomName}</title>
             </Helmet>

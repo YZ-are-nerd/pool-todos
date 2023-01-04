@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useRecoilValue } from "recoil"
 import UserBar from "../components/global/mobilebar/molecules/UserBar"
 import HomeBlock from "../components/Home/organisms/HomeBlock"
+import Statisctics from "../components/Statistic/template/Statisctics"
 import { User } from "../store/User"
 const HomePage = () => {
   const user = useRecoilValue(User)
@@ -17,9 +18,12 @@ const HomePage = () => {
         <Helmet>
             <title>Домашняя комната</title>
         </Helmet>
-        <div className="max-w-7xl w-full h-full mx-auto gap-6 flex">
+        <div className="max-w-7xl w-full h-full mx-auto gap-6 flex flex-col">
           <div className="w-full h-fulll flex flex-col">
             <HomeBlock key={1} />
+          </div>
+          <div className="w-full h-full">
+            <Statisctics />
           </div>
         </div>
         <UserBar />
