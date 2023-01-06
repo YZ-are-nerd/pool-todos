@@ -18,7 +18,7 @@ const RoomsPage = () => {
       <div className="max-w-7xl w-full h-full mx-auto flex flex-col gap-2">
         <div className="w-fit h-fit flex items-center">
           <Link to='/'><BiChevronLeft className='inline lg:hidden text-white' size={24}/></Link>
-          <h1 className='text-4xl font-bold'>Комнаты</h1>
+          <h1 className='text-4xl font-bold'>Папки</h1>
         </div>
         <div className="w-full h-full py-1 grid lg:grid-cols-4 lg:grid-rows-6 gap-2">
           <Suspense fallback={<RoomsLinksList />}>
