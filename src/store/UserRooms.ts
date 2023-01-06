@@ -11,7 +11,6 @@ export const UserRooms = atomFamily<IRoom[] | null, string>({
             const user = get(User)
             if (user) {
                 const deskTodos = await controllerAPI.getRoomsByUserID(id)
-                console.log(deskTodos);
                 return deskTodos
             }    
             return null
@@ -26,7 +25,6 @@ export const LimitedUserRooms = atomFamily<IRoom[] | null, string>({
             const user = get(User)
             if (user) {
                 const deskTodos = await controllerAPI.getLimitedRoomsByUserID(id, 3)
-                console.log(deskTodos);
                 return deskTodos
             }    
             return null
@@ -41,7 +39,6 @@ export const LimitedUserRoomsGrid = atomFamily<IRoom[] | null, string>({
             const user = get(User)
             if (user) {
                 const deskTodos = await controllerAPI.getLimitedRoomsByUserID(id, 24)
-                console.log(deskTodos);
                 return deskTodos
             }    
             return null

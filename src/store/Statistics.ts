@@ -39,7 +39,6 @@ export const Statistics = atom({
                     }
                     todosByDeskCollections.push(deskWTodos)
                 })
-                console.log(todosByDeskCollections);
                 return todosByDeskCollections
             }
             return null

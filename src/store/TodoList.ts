@@ -12,7 +12,6 @@ export const TodoListAtom = atomFamily<TasksList, string>({
         key: 'TodosTasks',
         get: (deskID: string) => async() => {
             const tasks = await controllerAPI.getTodosByDeskID(deskID)
-            console.log(tasks);
             if (tasks) {
                 const checkedList = tasks.filter(t => t.state === true)
                 const unCheckedList = tasks.filter(t => t.state === false)

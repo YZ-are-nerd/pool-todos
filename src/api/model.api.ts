@@ -8,11 +8,9 @@ export const modelAPI = (() => {
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
             })
-            console.log(error);
         },
         signOut: async() => {
             const { error } = await supabase.auth.signOut()
-            console.log(error);
         },
         getUserByID: async(id: string) => {
             const { data, error } = await supabase
@@ -65,7 +63,6 @@ export const modelAPI = (() => {
                 title: title
             })
             .eq('id', deskID)
-            console.log(error);
         },
         updateRoomName: async(roomID: string, title: string) => {
             const { error } = await supabase
@@ -74,21 +71,18 @@ export const modelAPI = (() => {
                 title: title
             })
             .eq('id', roomID)
-            console.log(error);
         },
         updateTodoState: async(todoID: string, state: boolean) => {
             const { error } = await supabase
             .from('todo')
             .update({ state: state })
             .eq('id', todoID)
-            console.log(error);
         },
         updateTodoTitle: async(todoID: string, title: string) => {
             const { error } = await supabase
             .from('todo')
             .update({ title: title })
             .eq('id', todoID)
-            console.log(error);
         },
         getRoomsByUserID: async(userID: string) => {
             const { data } = await supabase
@@ -123,7 +117,6 @@ export const modelAPI = (() => {
                 ref_to_room: roomID,
                 title: roomName
             })
-            console.log(error);
         },
         addNewRoom: async(roomName: string, userID: string) => {
             const { error } = await supabase
@@ -141,14 +134,12 @@ export const modelAPI = (() => {
                 state: state,
                 title: title
             })
-            console.log(error);
         },
         deleteTodo: async(todoID: string) => {
             const { error } = await supabase
             .from('todo')
             .delete()
             .eq('id', todoID)
-            console.log(error);
         },
         deleteRoom: async(roomID: string) => {
             const desks = await modelAPI.getDeskTodosByID(roomID)
@@ -160,13 +151,11 @@ export const modelAPI = (() => {
                 .from('rooms')
                 .delete()
                 .eq('id', roomID)
-                console.log(error);
             }
             const { error } = await supabase
             .from('rooms')
             .delete()
             .eq('id', roomID)
-            console.log(error);
         },
         deleteDeskTodo: async(deskID: string) => {
             const todos = await modelAPI.getTodosByDeskID(deskID)
@@ -178,16 +167,13 @@ export const modelAPI = (() => {
                 .from('desk_todo')
                 .delete()
                 .eq('id', deskID)
-                console.log('after deleted todos', error);
             }
             const { error } = await supabase
             .from('desk_todo')
             .delete()
             .eq('id', deskID)
-            console.log('no todos, but desk been deleted', error);
         },
         checkUserExistsByID: async(uid: string) => {
-            console.log(uid);
             const { data, error } = await supabase
             .from('users')
             .select("*")

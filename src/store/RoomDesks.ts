@@ -10,7 +10,6 @@ export const DeskTodos = atomFamily<IDeskTodos[] | null, string>({
             const user = get(User)
             if (user) {
                 const deskTodos = await controllerAPI.getDeskTodosByID(id)
-                console.log(deskTodos);
                 return deskTodos
             }    
             return null

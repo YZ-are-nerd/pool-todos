@@ -10,7 +10,6 @@ const RoomsPage = () => {
   const user = useRecoilValue(User)
   const navigate = useNavigate()
   useEffect(() => {
-    console.log('home', user);
     if (!user) navigate('/auth');
   },[user])
   return (
